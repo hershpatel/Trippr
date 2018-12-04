@@ -36,6 +36,8 @@ class App extends Component {
     this.setState({countries: value});
   };
 
+  // this.props.history.push(path)
+
   render() {
     const { dataSource } = this.state;
     const { Header, Footer, Sider, Content } = Layout;
@@ -51,9 +53,7 @@ class App extends Component {
             onSearch={this.handleSearch}
             placeholder="Where to?"
           />
-          <br/>
-          <br/>
-          <Button icon="search">Lets go!</Button>
+          <Button icon="search">GO</Button>
         </Content>
         </Layout>        
       </div>
