@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {Layout, Content } from 'antd';
 import MapContainer from './Map.js';
+import AddLocationView from './AddLocation.js'
 
 
 class ClusterView extends Component {
@@ -10,9 +11,9 @@ class ClusterView extends Component {
     const { Header, Content, Sider } = Layout;
 
     return (
-      <Layout style={{height:"100vh"}}>
+      <Layout style={{height:"100vh", overflow:'hidden'}}>
         <Header>
-          <p style={{ color: '#fff' }}>Header</p>
+          <p style={{ color: '#fff' }}>Trippr</p>
         </Header>
         <Layout>
           <Layout style={{ padding: '0 24px 24px' }}>
@@ -21,8 +22,8 @@ class ClusterView extends Component {
               <MapContainer/>
             </Content>
           </Layout>
-          <Sider width={200} style={{ background: '#fff' }}>
-            <p>Sider</p>
+          <Sider width={360} style={{ background: '#ECECEC', padding: '30px' }}>
+            <AddLocationView />
           </Sider>
         </Layout>
       </Layout>        
