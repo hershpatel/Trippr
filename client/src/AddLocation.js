@@ -11,6 +11,12 @@ class AddLocationView extends Component {
     console.log(value);
   }
 
+  removeLocation(value) {
+    this.setState({locations: this.state.locations.filter(function(location) { 
+        return location !== value 
+    })});
+}
+
 
   render() {
     const Search = Input.Search;
@@ -25,7 +31,7 @@ class AddLocationView extends Component {
                 locale={{emptyText: 'Tell us where you want to go!'}}
                 dataSource={this.state.locations}
                 renderItem={item => (
-                    <List.Item actions={[<a>remove</a>]}>
+                    <List.Item actions={[<a onClick={() => this.removeLocation(item)}>remove</a>]}>
                         {item}
                     </List.Item>
                   )}
