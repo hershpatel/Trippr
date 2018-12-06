@@ -1,0 +1,34 @@
+import React, { Component } from 'react';
+import {Layout, Content } from 'antd';
+import MapContainer from './Map.js';
+import AddLocationView from './AddLocation.js'
+
+
+class ClusterView extends Component {
+  state = {}
+
+  render() {
+    const { Header, Content, Sider } = Layout;
+
+    return (
+      <Layout style={{height:"100vh", overflow:'hidden'}}>
+        <Header>
+          <p style={{ color: '#fff' }}>Trippr</p>
+        </Header>
+        <Layout>
+          <Layout style={{ padding: '0 24px 24px' }}>
+            <Content style={{background: '#fff', padding: 24, margin: 0, minHeight: 280, textAlign: 'left'}}>
+              <h2 >Seattle</h2>
+              <MapContainer/>
+            </Content>
+          </Layout>
+          <Sider width={360} style={{ background: '#ECECEC', padding: '30px' }}>
+            <AddLocationView />
+          </Sider>
+        </Layout>
+      </Layout>        
+    );
+  }
+}
+
+export default ClusterView;

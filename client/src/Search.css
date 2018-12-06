@@ -1,6 +1,9 @@
-.App {
+.Search {
   text-align: center;
   width: 100%;
   height: 100%;
 }
 
+.whereContent {
+  margin-top: 35vh;
+}
