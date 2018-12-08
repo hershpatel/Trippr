@@ -5,5 +5,13 @@
 }
 
 .whereContent {
-  margin-top: 35vh;
+  padding-top: 35vh;
+  height: 100vh;
+  background-image: url("http://tripprr.herokuapp.com/sf_background.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.whiteText {
+  color: white;
 }

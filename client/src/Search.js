@@ -40,10 +40,10 @@ class SearchView extends Component {
     const { Content } = Layout;
     return (
       <div className="Search">
-        <Layout style={{height:"100vh"}}>
+        {/* <Layout style={{height:"100vh"}}> */}
           <Content className="whereContent">
-          <h1> Trippr </h1>
-          <h3> Map optimal routes around the city, everytime </h3>
+          <h1 className="whiteText"> Trippr </h1>
+          <h3 className="whiteText"> Map optimal routes around the city, everytime </h3>
           <AutoComplete
             dataSource={dataSource}
             style={{ width: 200 }}
@@ -52,7 +52,7 @@ class SearchView extends Component {
             placeholder="Where to?"/>
           <Button icon="search">GO</Button>
         </Content>
-        </Layout>      
+        {/* </Layout>       */}
       </div>
     );
   }
