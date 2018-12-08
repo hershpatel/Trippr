@@ -40,7 +40,7 @@ class SearchView extends Component {
     const { Content } = Layout;
     return (
       <div className="Search">
-        <Layout style={{height:"100vh"}}>
+        <Layout className="layout" style={{height:"100vh"}}>
           <Content className="whereContent">
           <h1> Trippr </h1>
           <h3> Map optimal routes around the city, everytime </h3>
