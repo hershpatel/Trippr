@@ -7,3 +7,9 @@
 .whereContent {
   margin-top: 35vh;
 }
+
+.layout {
+background-image: url(http://tripprr.herokuapp.com/sf_background.jpg);
+background-repeat: no-repeat;
+background-size: auto;
+}
