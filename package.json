@@ -2,6 +2,7 @@
   "name": "Trippr",
   "version": "0.1.0",
   "scripts": {
-    "heroku-postbuild": "npm run start --prefix server && cd client && npm install && npm run build"
+  	"start": "npm run start --prefix server",
+    "heroku-postbuild": "cd client && npm install && npm run build"
   }
 }
