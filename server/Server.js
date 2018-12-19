@@ -19,6 +19,6 @@ DatabaseManager.init().then(() =>
 });
 
 //Endpoints
-app.use(express.static(path.join(__dirname, 'client/build')));
+app.use(express.static(path.join(__dirname, '../client/build')));
 app.get("/api/contacts", ContactHandler.fetchContacts);
 app.post("/api/contacts", ContactHandler.insertContact);
