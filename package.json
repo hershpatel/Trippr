@@ -1,6 +1,7 @@
 {
   "name": "Trippr",
   "version": "0.1.0",
+  "proxy": "http://localhost:8080",
   "scripts": {
   	"start": "npm run start --prefix server",
     "heroku-postbuild": "cd client && npm install && npm run build"
