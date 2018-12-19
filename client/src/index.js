@@ -1,14 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter } from 'react-router-dom';
-
-import App from './App';
 import './index.css';
 import 'antd/dist/antd.css'
+import App from './App';
+import registerServiceWorker from './registerServiceWorker';
 
+import { createStore, applyMiddleware } from 'redux';
+import { Provider } from 'react-redux';
+import logger from 'redux-logger';
+import reducers from './reducers';
+import ReduxPromise from 'redux-promise';
 
-ReactDOM.render((
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>
-), document.getElementById('root'));
+const store = createStore(
+    reducers,
+    applyMiddleware(logger, ReduxPromise)
+);
+
+ReactDOM.render(
+    <Provider store={store}>
+        <App />
+    </Provider>
+    , document.getElementById('root'));
+registerServiceWorker();

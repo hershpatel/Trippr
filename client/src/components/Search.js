@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './Search.css';
+import '../styles/Search.css';
 import { AutoComplete, Layout, Button } from 'antd';
 
 
@@ -40,7 +40,6 @@ class SearchView extends Component {
     const { Content } = Layout;
     return (
       <div className="Search">
-        {/* <Layout style={{height:"100vh"}}> */}
           <Content className="whereContent">
           <h1 className="whiteText"> Trippr </h1>
           <h3 className="whiteText"> Map optimal routes around the city, everytime </h3>
@@ -50,9 +49,9 @@ class SearchView extends Component {
             onSelect={onSelect}
             onSearch={this.handleSearch}
             placeholder="Where to?"/>
+            &nbsp;
           <Button icon="search">GO</Button>
         </Content>
-        {/* </Layout>       */}
       </div>
     );
   }

@@ -1,20 +1,32 @@
 import React, { Component } from 'react';
+import logo from './logo.svg';
 import './App.css';
-import {withRouter, Route} from 'react-router-dom';
-import ClusterView from './Cluster.js'
-import SearchView from './Search.js'
+import SearchView from './components/Search.js'
 
+import { connect } from 'react-redux';
+import { defaultFunction } from './actions';
 
 class App extends Component {
-  state = {  };
+
+  componentDidMount() {
+    // call default function to display redux operation
+    this.props.defaultFunction();
+  }
 
   render() {
     return (
-      <div className="App">
-        <SearchView/>    
+      <div>
+        <SearchView/>  
       </div>
     );
   }
 }
 
-export default withRouter(App);
+// function to convert the global state obtained from redux to local props
+function mapStateToProps(state) {
+  return {
+    default: state.default
+  };
+}
+
+export default connect(mapStateToProps, { defaultFunction })(App);
