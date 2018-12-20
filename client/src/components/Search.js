@@ -2,26 +2,32 @@ import React, { Component } from 'react';
 import '../styles/Search.css';
 import { AutoComplete, Layout, Button } from 'antd';
 
-
-function onSelect(value) {
-  console.log('onSelect', value);
-}
-
 const locations = ["New York", "San Francisco", "Chicago"];
 
 class SearchView extends Component {
   state = {
     dataSource: locations,
+    isGoDisabled: true
   }
 
   handleSearch = (value) => {
     var filtedData = locations.filter(function(item) {
         return item.toLowerCase().includes(value.toLowerCase())
       });
+    let isGoDisabled = !(filtedData.length === 1 && filtedData[0].toLowerCase() === value.toLowerCase());
+    console.log(filtedData);
     this.setState({
-      dataSource: filtedData
-      }
-    );
+      dataSource: filtedData,
+      isGoDisabled
+    });
+  }
+
+  onSelect = (value) => {
+    console.log('onSelect', value);
+    this.setState({
+      dataSource: [value],
+      isGoDisabled: false
+    });
   }
 
   getContacts = () => {
@@ -30,10 +36,6 @@ class SearchView extends Component {
       .then(res => res.json())
       .then(passwords => this.setState({ passwords }));
   }
-
-  handleChange = (value) => {
-    this.setState({countries: value});
-  };
 
   render() {
     const { dataSource } = this.state;
@@ -46,11 +48,15 @@ class SearchView extends Component {
           <AutoComplete
             dataSource={dataSource}
             style={{ width: 200 }}
-            onSelect={onSelect}
+            onSelect={this.onSelect}
             onSearch={this.handleSearch}
             placeholder="Where to?"/>
             &nbsp;
-          <Button icon="search">GO</Button>
+          <Button 
+          icon="search"
+          disabled={this.state.isGoDisabled}>
+          GO
+          </Button>
         </Content>
       </div>
     );

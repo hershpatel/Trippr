@@ -5,6 +5,7 @@ import SearchView from './components/Search.js'
 
 import { connect } from 'react-redux';
 import { defaultFunction } from './actions';
+import ClusterView from './components/Cluster';
 
 class App extends Component {
 
@@ -16,7 +17,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <SearchView/>  
+        <ClusterView/>  
       </div>
     );
   }
