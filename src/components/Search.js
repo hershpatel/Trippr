@@ -38,7 +38,7 @@ class SearchView extends Component {
   }
   
   fetchGroups() {
-    fetch("https://tripprapi.herokuapp.com/seattle")
+    fetch("/seattle")
       .then(response => response.json())
       .then(data =>
         this.setState({

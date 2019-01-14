@@ -2,6 +2,7 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
+  "proxy": "https://tripprapi.herokuapp.com"    
   "dependencies": {
     "antd": "^3.10.9",
     "antd-init": "^2.0.7",
