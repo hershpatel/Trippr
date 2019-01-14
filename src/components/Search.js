@@ -44,8 +44,8 @@ class SearchView extends Component {
         this.setState({
         city: data,
         isLoading: false,
-      })
-    )
+      }))
+      .then(() => console.log(this.state.city))
   } 
 
   render() {
@@ -66,6 +66,7 @@ class SearchView extends Component {
           <Button 
             icon="search"
             disabled={this.state.isGoDisabled}
+            onClick = {this.fetchGroups}
             >
             GO
           </Button>
