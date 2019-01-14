@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import '../styles/Search.css';
 import { AutoComplete, Layout, Button } from 'antd';
 
-const locations = ["New York", "San Francisco", "Chicago"];
+const locations = ["Seattle, WA", "New York, NY", "San Francisco, CA"];
 
 class SearchView extends Component {
   state = {
@@ -36,6 +36,17 @@ class SearchView extends Component {
       .then(res => res.json())
       .then(passwords => this.setState({ passwords }));
   }
+  
+  fetchGroups() {
+    fetch("https://tripprapi.herokuapp.com/seattle")
+      .then(response => response.json())
+      .then(data =>
+        this.setState({
+        city: data,
+        isLoading: false,
+      })
+    )
+  } 
 
   render() {
     const { dataSource } = this.state;
@@ -44,7 +55,7 @@ class SearchView extends Component {
       <div className="Search">
           <Content className="whereContent">
           <h1 className="whiteText"> Trippr </h1>
-          <h3 className="whiteText"> Map optimal routes around the city, everytime </h3>
+          <h3 className="whiteText"> map optimal routes around a city, anytime </h3>
           <AutoComplete
             dataSource={dataSource}
             style={{ width: 200 }}
@@ -53,9 +64,10 @@ class SearchView extends Component {
             placeholder="Where to?"/>
             &nbsp;
           <Button 
-          icon="search"
-          disabled={this.state.isGoDisabled}>
-          GO
+            icon="search"
+            disabled={this.state.isGoDisabled}
+            >
+            GO
           </Button>
         </Content>
       </div>
