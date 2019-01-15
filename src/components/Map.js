@@ -13,26 +13,6 @@ export class MapContainer extends Component {
           };
 
 
-  calculateCentroids = () => {
-    let clusters = this.props.clusters['clusters'];
-    let centroids = []
-    for (var clusterName in clusters) {
-      let pins = clusters[clusterName];
-      let latSum = 0;
-      let lngSum = 0;
-      let numPins = pins.length;
-      for (var i = 0; i < numPins; i++) {
-        var pin = pins[i];
-        latSum += pin['lat'];
-        lngSum += pin['lon'];
-
-      }
-      let lat = latSum / numPins;
-      let lng = lngSum / numPins;
-      centroids.push([clusterName, {lat, lng}]);
-    }
-    return centroids;
-  }
 
   markerClick = (place) => {
     this.setState({
@@ -43,7 +23,6 @@ export class MapContainer extends Component {
 
 
   render() {
-    const centroids = this.calculateCentroids();
     const getCirclePaint = {
       'circle-radius': 50,
       'circle-color': '#E54E52',
@@ -68,7 +47,7 @@ export class MapContainer extends Component {
         <ZoomControl/>
             
         {
-          this.props.clusters.map(function(cluster) {
+          this.props.groups.map(function(cluster) {
             console.log(cluster);
             return <Layer key={cluster.name} type="circle" id={cluster.name} paint={{
                       'circle-color': cluster.color,
@@ -76,10 +55,10 @@ export class MapContainer extends Component {
                       'circle-stroke-color': '#fff',
                       'circle-stroke-opacity': 1
                     }}>
-                        {  cluster.locations.map(function(place) {
+                        {  cluster.places.map(function(place) {
                             console.log(place);
                               return <Feature key={place.name} 
-                                              coordinates={[place['lon'],place['lat']]}
+                                              coordinates={place.coord}
                                               onClick={that.markerClick.bind(that, place)}>
                                       </Feature>;
                             })
@@ -88,12 +67,10 @@ export class MapContainer extends Component {
           })
         }
         {place && (
-          <Popup key={place.name} coordinates={[place['lon'],place['lat']]} offset='center'>
+          <Popup key={place.name} coordinates={place.coord} offset='center'>
               <div>{place.name}</div>
           </Popup>
-        )}
-        
-            
+        )}  
           
       </Map>
     );

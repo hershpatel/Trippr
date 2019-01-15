@@ -33,10 +33,10 @@ callback(key) {
     return (
         <div>
             {
-                this.props.clusters.map(function(cluster) {
+                this.props.groups.map(function(cluster) {
                     console.log(cluster);
                     return <div><Tag color={cluster.color}>{cluster.name}</Tag>
-                            <Table pagination={false} dataSource={cluster.locations} columns={columns} />
+                            <Table pagination={false} dataSource={cluster.places} columns={columns} />
                             <br></br>
                             </div>;
                             
