@@ -40,12 +40,12 @@ class SearchView extends Component {
   fetchGroups() {
     fetch("/seattle")
       .then(response => response.json())
-      .then(data =>
-        this.setState({
-        city: data,
-        isLoading: false,
-      }))
-      .then(() => console.log(this.state.city))
+      .then(data => console.log(data))
+//      .then(data =>
+//        this.setState({
+//        city: data,
+//        isLoading: false,
+//      }))
   } 
 
   render() {
