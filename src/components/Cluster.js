@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
-import {Layout, Content } from 'antd';
+import {Layout, Content, Button } from 'antd';
 import MapContainer from './Map.js';
-import AddLocationView from './AddLocation.js'
+import AddLocationView from './AddLocation.js';
+import PlacesGridView from './PlacesGrid.js';
 
 
 const clusters = [
   {
-    name: 'A',
+    name: 'Central City',
     color: '#E54E52',
     locations: [
       {
@@ -54,7 +55,7 @@ const clusters = [
     ]
   },
   {
-    name: 'B',
+    name: 'The Rivertown',
     color: '#000000',
     locations: [
       {
@@ -326,14 +327,27 @@ class ClusterView extends Component {
 
   render() {
     const { Header, Content, Sider } = Layout;
+    const ButtonGroup = Button.Group;
 
     return (
-      <Layout style={{height:"100vh"}}>
+      <Layout style={{height:"100%"}}>
         <Layout>
           <Layout style={{ padding: '0 24px 24px' }}>
             <Content style={{background: '#fff', padding: 24, margin: 0, minHeight: 280, textAlign: 'left'}}>
               <h2 >Seattle</h2>
-              <MapContainer locations={this.state.locations} clusters = {clusters} places={places}/>
+              <MapContainer locations={this.state.locations} clusters = {clusters}/>
+              <br></br>
+              <div>
+                <h2 style={{float: "left"}}>Schedule View</h2>
+                <p style={{float: "right"}}> EXPORT TO: &nbsp;&nbsp;&nbsp;
+                  <ButtonGroup >
+                    <Button>Google Maps</Button>
+                    <Button>Excel</Button>
+                  </ButtonGroup>
+                </p>
+                <h2 style={{clear:"both"}}/>
+              </div>
+              <PlacesGridView clusters = {clusters}/>
             </Content>
           </Layout>
           <Sider width={360} style={{ background: '#ECECEC', padding: '30px' }}>

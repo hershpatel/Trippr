@@ -64,7 +64,6 @@ export class MapContainer extends Component {
         containerStyle={{
           height: 500,
           width: "50vw",
-          padding: 24
         }}>
         <ZoomControl/>
             
