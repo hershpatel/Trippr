@@ -334,7 +334,7 @@ class ClusterView extends Component {
         <Layout>
           <Layout style={{ padding: '0 24px 24px' }}>
             <Content style={{background: '#fff', padding: 24, margin: 0, minHeight: 280, textAlign: 'left'}}>
-              <h2 >Seattle</h2>
+              <h2 >{this.props.match.params.city}</h2>
               <MapContainer locations={this.state.locations} clusters = {clusters}/>
               <br></br>
               <div>

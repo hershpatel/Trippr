@@ -37,10 +37,12 @@ class SearchView extends Component {
       .then(passwords => this.setState({ passwords }));
   }
   
-  fetchGroups() {
-    fetch("/seattle")
-      .then(response => response.json())
-      .then(data => console.log(data))
+  fetchGroups = () => {
+    const searchLocation = this.state.dataSource[0];
+    this.props.history.push(`/clusters/` + searchLocation)
+    // fetch("/seattle")
+    //   .then(response => response.json())
+    //   .then(data => console.log(data))
 //      .then(data =>
 //        this.setState({
 //        city: data,

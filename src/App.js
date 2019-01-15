@@ -18,9 +18,13 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-        <ClusterView/>  
-      </div>
+      <Router>
+        <div>
+        <Route exact path="/" component={SearchView}/>
+          <Route exact path='/search' component={SearchView} />
+          <Route exact path='/clusters/:city' component={ClusterView} />
+        </div>
+      </Router>
     );
   }
 }
