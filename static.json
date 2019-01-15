@@ -1,7 +1,0 @@
-{
-  "proxies": {
-    "/seattle/": {
-      "origin": "http://tripprapi.herokuapp.com"
-    }
-  }
-}

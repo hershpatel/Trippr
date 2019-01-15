@@ -49,7 +49,7 @@ export class MapContainer extends Component {
         {
           this.props.groups.map(function(cluster) {
             console.log(cluster);
-            return <Layer key={cluster.name} type="circle" id={cluster.name} paint={{
+            return <Layer key={cluster.name} type="circle" id={cluster.group_name} paint={{
                       'circle-color': cluster.color,
                       'circle-stroke-width': 1,
                       'circle-stroke-color': '#fff',
