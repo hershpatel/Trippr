@@ -17,23 +17,10 @@ class ClusterView extends Component {
 
   componentDidMount() {
     // call default function to display redux operation
-    axios
-    .get("https://tripprapi.herokuapp.com/seattle")
-    .then(response => {
-      console.log(response);
-      console.log(response.json());
-      this.setState({locations:[], groups: response.json()['groups'] })
-    });
 
-    // fetch("https://tripprapi.herokuapp.com/seattle", {
-    //   mode: "no-cors",
-    //   method: "GET",
-    //   headers: {
-    //     "Accept": "application/json"
-    //   }
-    // })
-    // .then(response => response.json())
-    // .then(data => this.setState({locations:[], groups: data['groups'] }))
+    fetch("https://tripprapi.herokuapp.com/seattle")
+    .then(response => response.json())
+    .then(data => this.setState({locations:[], groups: data['groups'] }))
   }
 
   removeLocation = (value) => {
