@@ -16,7 +16,11 @@ class ClusterView extends Component {
   componentDidMount() {
     // call default function to display redux operation
     fetch("https://tripprapi.herokuapp.com/seattle", {
-      mode: 'no-cors',
+      mode: "no-cors",
+      method: "GET",
+      headers: {
+        "Accept": "application/json"
+      }
     })
     .then(response => response.json())
     .then(data => this.setState({locations:[], groups: data['groups'] }))
