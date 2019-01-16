@@ -20,7 +20,9 @@ class ClusterView extends Component {
     axios
     .get("https://tripprapi.herokuapp.com/seattle")
     .then(response => {
-      this.setState({locations:[], groups: response['groups'] })
+      console.log(response);
+      console.log(response.json());
+      this.setState({locations:[], groups: response.json()['groups'] })
     });
 
     // fetch("https://tripprapi.herokuapp.com/seattle", {
