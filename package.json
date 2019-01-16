@@ -5,6 +5,7 @@
   "dependencies": {
     "antd": "^3.10.9",
     "antd-init": "^2.0.7",
+    "axios": "^0.18.0",
     "babel-runtime": "^6.26.0",
     "google-maps-react": "^2.0.2",
     "mapbox-gl": "^0.52.0",

@@ -3,6 +3,8 @@ import {Layout, Content, Button } from 'antd';
 import MapContainer from './Map.js';
 import AddLocationView from './AddLocation.js';
 import PlacesGridView from './PlacesGrid.js';
+import axios from "axios";
+
 
 
 class ClusterView extends Component {
@@ -15,15 +17,21 @@ class ClusterView extends Component {
 
   componentDidMount() {
     // call default function to display redux operation
-    fetch("https://tripprapi.herokuapp.com/seattle", {
-      mode: "no-cors",
-      method: "GET",
-      headers: {
-        "Accept": "application/json"
-      }
-    })
-    .then(response => response.json())
-    .then(data => this.setState({locations:[], groups: data['groups'] }))
+    axios
+    .get("https://tripprapi.herokuapp.com/seattle")
+    .then(response => {
+      this.setState({locations:[], groups: data['groups'] })
+    });
+
+    // fetch("https://tripprapi.herokuapp.com/seattle", {
+    //   mode: "no-cors",
+    //   method: "GET",
+    //   headers: {
+    //     "Accept": "application/json"
+    //   }
+    // })
+    // .then(response => response.json())
+    // .then(data => this.setState({locations:[], groups: data['groups'] }))
   }
 
   removeLocation = (value) => {
