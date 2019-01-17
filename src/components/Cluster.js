@@ -11,8 +11,10 @@ class ClusterView extends Component {
   state = {locations:[], groups: []}
 
   addLocation = (address, latLng) => {
-    const attraction = {address, latLng};
-    this.setState({ locations: [...this.state.locations, attraction] });
+    const attraction = {address, "coord": [latLng["lng"],latLng["lat"]],"lat":latLng["lat"],"lon":latLng["lng"],"name":"user added input","rating":4.4};
+    var groups = this.state.groups;
+    groups[0]['places'].push(attraction);
+    this.setState({locations:[], groups})
   }
 
   componentDidMount() {

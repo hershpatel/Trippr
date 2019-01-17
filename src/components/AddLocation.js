@@ -14,7 +14,7 @@ class AddLocationView extends Component {
               style={{ width: 300, textAlign: 'left' }}>
 
               <LocationSearchInput addLocation={this.props.addLocation}/>
-              <br/>
+              {/* <br/>
               <List
                 locale={{emptyText: 'Tell us where you want to go!'}}
                 dataSource={this.props.locations}
@@ -23,7 +23,7 @@ class AddLocationView extends Component {
                         {item}
                     </List.Item>
                   )}
-              />
+              /> */}
             </Card>
     );
   }
