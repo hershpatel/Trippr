@@ -33,6 +33,19 @@ class ClusterView extends Component {
     });
   }
 
+  deleteLocation = (value) => { 
+    var groups = this.state.groups;
+    for(let i = 0; i < groups.length; i++) {
+      var group = groups[i];
+      var places = group['places'].filter(function(place) { 
+        return place['address'] != value;
+      });
+      group.places = places;
+      groups[i] = group;
+    }
+    this.setState({locations:[], groups})
+  }
+
   addresses = () => {
     return this.state.locations.map(function(attraction) { return attraction['address']; });
   }
@@ -59,7 +72,7 @@ class ClusterView extends Component {
                 </p>
                 <h2 style={{clear:"both"}}/>
               </div>
-              <PlacesGridView groups = {this.state.groups}/>
+              <PlacesGridView groups = {this.state.groups} deleteLocation = {this.deleteLocation}/>
             </Content>
           </Layout>
           <Sider width={360} style={{ background: '#ECECEC', padding: '30px' }}>

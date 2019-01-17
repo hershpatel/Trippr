@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Collapse, Table, Tag } from 'antd';
+import { Collapse, Table, Tag, Divider } from 'antd';
 import LocationSearchInput from './LocationSearch.js';
 
 
@@ -28,6 +28,14 @@ callback(key) {
         key: 'rating',
         defaultSortOrder: 'descend',
         sorter: (a, b) => a.rating - b.rating
+      },{
+        title: 'Action',
+        key: 'action',
+        render: (place) => (
+          <span>
+            <a onClick={() => this.props.deleteLocation(place.address)}>Delete</a>
+          </span>
+        ),
       }];
 
     return (
