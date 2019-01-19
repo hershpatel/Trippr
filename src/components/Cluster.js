@@ -15,24 +15,26 @@ class ClusterView extends Component {
     var groups = this.state.groups;
     groups[0]['places'].push(attraction);
     this.setState({locations:[], groups})
+    this.saveChanges();
   }
 
   componentDidMount() {
     // call default function to display redux operation
-
-    fetch("https://tripprapi.herokuapp.com/seattle")
+    fetch("https://tripprapi.herokuapp.com/trips?_id=" + this.props.match.params.tripId)
     .then(response => response.json())
     .then(data => this.setState({locations:[], groups: data['groups'] }))
   }
 
-  removeLocation = (value) => {
-    console.log(value);
-    console.log(this.state.locations);
-    console.log("in here!");
-    this.setState({locations: this.state.locations.filter(function(attraction) { 
-        return attraction['address'] !== value 
-      }), groups: this.state.groups
-    });
+  saveChanges = () => {
+    console.log("in save");
+    fetch('https://tripprapi.herokuapp.com/trips', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(this.state.groups)
+    })
   }
 
   deleteLocation = (value) => { 
@@ -46,6 +48,7 @@ class ClusterView extends Component {
       groups[i] = group;
     }
     this.setState({locations:[], groups})
+    this.saveChanges();
   }
 
   addresses = () => {

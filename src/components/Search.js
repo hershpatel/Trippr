@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import '../styles/Search.css';
 import { AutoComplete, Layout, Button } from 'antd';
+import uuid from 'uuid/v4';
+
+
 
 const locations = ["Seattle, WA", "New York, NY", "San Francisco, CA"];
 
@@ -39,7 +42,8 @@ class SearchView extends Component {
   
   fetchGroups = () => {
     const searchLocation = this.state.dataSource[0];
-    this.props.history.push(`/clusters/` + searchLocation)
+    const tripId = uuid();
+    this.props.history.push(`/clusters/` + searchLocation + '/' + tripId);
     // fetch("/seattle")
     //   .then(response => response.json())
     //   .then(data => console.log(data))

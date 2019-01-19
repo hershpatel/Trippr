@@ -22,7 +22,7 @@ class App extends Component {
         <div>
         <Route exact path="/" component={SearchView}/>
           <Route exact path='/search' component={SearchView} />
-          <Route exact path='/clusters/:city' component={ClusterView} />
+          <Route exact path='/clusters/:city/:tripId' component={ClusterView} />
         </div>
       </Router>
     );
