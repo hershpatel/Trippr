@@ -27,13 +27,14 @@ class ClusterView extends Component {
 
   saveChanges = () => {
     console.log("in save");
+    const postObject = {_id:this.props.match.params.tripId, groups: this.state.groups};
     fetch('https://tripprapi.herokuapp.com/trips', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(this.state.groups)
+      body: JSON.stringify(postObject)
     })
   }
 
